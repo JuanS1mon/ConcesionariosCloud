@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/JuanS1mon/concesionario-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/JuanS1mon/concesionario-frontend.git
