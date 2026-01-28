@@ -35,7 +35,7 @@ El sistema permite interconectar inventarios entre concesionarias en la red, sug
 
 ## Roadmap (alto nivel)
 - ✅ MVP catálogo de autos (implementado)
-- ✅ Panel concesionario básico (implementado, pero sin auth integrada)
+- ✅ Panel concesionario básico (implementado con auth integrada)
 - Gestión de leads (cotizaciones básicas implementadas, leads pendientes)
 - Motor de precios inteligente (pendiente)
 - Analytics y métricas (básico en docs, implementación pendiente)
