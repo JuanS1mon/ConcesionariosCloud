@@ -1,0 +1,11 @@
+node_modules/
+.env
+__pycache__/
+*.log
+temp_*
+.idea/
+.vscode/
+.DS_Store
+test_*
+backend
+frontend

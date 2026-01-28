@@ -1,11 +1,33 @@
-# Arquitectura del Proyecto
+# Arquitectura de ConcesionariosCloud
 
-## Descripción General
-Este proyecto consta de un backend y un frontend para la gestión de concesionarios de autos.
+## Visión general
+ConcesionariosCloud es una plataforma en la nube para múltiples concesionarias, donde cada empresa tiene su propio panel, catálogo y clientes de forma aislada.
 
 ## Componentes
-- **Backend**: API REST con FastAPI, base de datos PostgreSQL, autenticación JWT.
-- **Frontend**: Aplicación Next.js con React, integrada con el backend.
 
-## Diagrama de Arquitectura
-[Agregar diagrama aquí]
+### Frontend (Next.js)
+- Catálogo público SEO friendly
+- Panel concesionario (dashboard)
+- Autenticación y roles
+
+### Backend (FastAPI)
+- API REST
+- Autenticación JWT
+- Gestión de autos, concesionarias y leads
+- Motor de reglas de precios
+- Servicios de analytics
+
+### Base de Datos (PostgreSQL)
+- Esquema multi-concesionaria (tenant_id)
+- Índices para búsqueda rápida
+- Full-text search en catálogos
+
+## Infraestructura
+- Docker para entornos reproducibles
+- Railway para despliegue
+- Nginx como reverse proxy
+
+## Diseño SaaS
+- Multi-concesionaria con aislamiento lógico
+- Roles: Admin, Dealer, User
+- Escalable a microservicios en futuras versiones

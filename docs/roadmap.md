@@ -1,10 +1,26 @@
-# Roadmap del Proyecto
+# Roadmap ConcesionariosCloud
 
-## Versiones Futuras
-- **v1.1**: Agregar módulo de cotizaciones avanzadas.
-- **v1.2**: Integración con servicios de pago.
-- **v2.0**: Soporte para múltiples concesionarios.
+## Fase 1 - MVP
+- CRUD autos
+- Catálogo público
+- Autenticación básica
 
-## Tareas Pendientes
-- Mejorar UI del dashboard.
-- Optimizar consultas de base de datos.
+## Fase 2 - Producto SaaS
+- Multi-concesionaria
+- Panel dealer
+- Gestión de leads
+
+## Fase 3 - Inteligencia Comercial
+- Lead scoring
+- Motor de precios
+- Recomendador de autos
+
+## Fase 4 - Escalabilidad
+- Redis cache
+- Observabilidad
+- Optimización DB
+
+## Fase 5 - Monetización
+- Planes SaaS
+- Billing
+- Feature flags
