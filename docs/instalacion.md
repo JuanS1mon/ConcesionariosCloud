@@ -34,9 +34,9 @@ Para subir y gestionar imágenes, configura Cloudinary:
 - Usa `docker-compose` si tienes un archivo (no visible en el repo actual).
 
 ## Uso
-- **Catálogo público**: Visita http://localhost:3000 para ver autos con filtros.
-- **Panel admin**: Accede a http://localhost:3000/admin (requiere auth, implementada en backend pero no integrada en frontend aún).
-- **API**: Documentación automática en http://localhost:8000/docs (Swagger UI).
+- **Catálogo público**: Visita [https://concesionarios.cloud/](https://concesionarios.cloud/) para ver autos con filtros.
+- **Panel admin**: Accede a https://concesionarios.cloud/admin (requiere auth, implementada en backend pero no integrada en frontend aún).
+- **API**: Documentación automática en https://concesionarios.cloud/docs (Swagger UI).
 
 ## API Endpoints Principales
 Basado en FastAPI. Todos los endpoints requieren auth JWT para operaciones de escritura (excepto login).

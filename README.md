@@ -44,7 +44,7 @@ El sistema permite interconectar inventarios entre concesionarias en la red, sug
 ## Deploy
 - Backend y frontend desplegados en Railway.
 - Base de datos PostgreSQL administrada.
-- Ver `docs/DEPLOYMENT_GUIDE.md` para detalles de despliegue.
+- Dominios: [https://concesionarios.cloud/](https://concesionarios.cloud/) y concesionariocloud.com
 
 ## Status
 Desarrollo activo con actualizaciones semanales. Algunas funcionalidades (como motor de precios o analytics completos) están planificadas pero no implementadas aún.
