@@ -6,6 +6,8 @@
 
 - 539c5a5 - Inicializacion del proyecto, documentacion inicial
 - def9914 - Inicializar estructura del proyecto con submodules y documentación
+- 3e43686 - Actualizar submodules con implementación de gestión de clientes
+- 0886e66 - docs: actualización de documentación con URLs de producción
 ## [1.0.0] - 2026-01-27
 - **Backend (FastAPI)**:
   - Implementación de API REST con endpoints CRUD para autos, marcas, modelos, estados y cotizaciones.
