@@ -1,0 +1,133 @@
+flowchart TD
+    %% Clientes y Canales de Entrada
+    A[👤 Cliente] --> B{📞 ¿Cómo contacta?}
+    B -->|🌐 Sitio Web| C[📝 Formulario Web]
+    B -->|💬 WhatsApp| D[💬 Chat WhatsApp]
+    B -->|📞 Llamada| E[📞 Atención Telefónica]
+    B -->|🏢 Presencial| F[🏢 Showroom]
+
+    %% Recepción de Consulta
+    C --> G[📨 Recepción de Consulta]
+    D --> G
+    E --> G
+    F --> G
+
+    G --> H{🔍 ¿Auto específico?}
+    H -->|✅ Sí| I[🔍 Buscar Auto en Inventario]
+    H -->|❌ No| J[📋 Mostrar Catálogo/General]
+
+    %% Búsqueda y Pricing
+    I --> K{📊 ¿Auto encontrado?}
+    K -->|✅ Sí| L[📄 Obtener Datos del Auto]
+    K -->|❌ No| M[🏪 Buscar en Mercado/Proveedores]
+
+    L --> N[🧠 Pricing Engine]
+    N --> O[💰 Calcular Precio Sugerido]
+    O --> P[📈 Obtener Comparables]
+    P --> Q[⏱️ Simulador de Ventas]
+    Q --> R[📊 Estimar Tiempo de Venta]
+
+    %% Generación de Cotización
+    O --> S[📄 Generar Cotización]
+    R --> S
+    M --> S
+
+    S --> T[💾 Crear Registro Cotización]
+    T --> U[(🗄️ Base de Datos<br/>cotizaciones)]
+
+    %% Comunicación con Cliente
+    S --> V{📤 ¿Canal original?}
+    V -->|🌐 Web| W[📧 Enviar Email + PDF]
+    V -->|💬 WhatsApp| X[💬 Enviar mensaje + PDF]
+    V -->|📞 Teléfono| Y[📞 Llamar y explicar]
+    V -->|🏢 Presencial| Z[📄 Entregar físicamente]
+
+    %% Seguimiento y Negociación
+    W --> AA[📬 Cliente Recibe Cotización]
+    X --> AA
+    Y --> AA
+    Z --> AA
+
+    AA --> BB{💭 ¿Interesado?}
+    BB -->|✅ Sí| CC[🤝 Negociación]
+    BB -->|❌ No| DD[❌ Fin - No interesado]
+
+    CC --> EE{💰 ¿Negociar precio?}
+    EE -->|✅ Sí| FF[🎛️ Simulador Interactivo]
+    EE -->|❌ No| GG[✅ Proceder con precio original]
+
+    FF --> HH[👆 Cliente ajusta precio]
+    HH --> II[🔄 Recalcular tiempo/márgen]
+    II --> JJ[📊 Mostrar impacto]
+    JJ --> KK{👍 ¿Acepta nuevo precio?}
+    KK -->|✅ Sí| GG
+    KK -->|❌ No| LL[🔄 Negociación continúa]
+
+    %% Reserva y Compra
+    GG --> MM[🛒 Cliente decide comprar]
+    MM --> NN{📝 ¿Reserva o compra directa?}
+
+    NN -->|⏳ Reserva| OO[📅 Crear Reserva]
+    OO --> PP[(🗄️ Base de Datos<br/>reservas)]
+    PP --> QQ[✅ Enviar confirmación]
+    QQ --> RR[💳 Esperar pago inicial]
+
+    NN -->|🛒 Compra Directa| SS[✅ Proceder a venta]
+
+    RR --> TT{💳 Pago realizado?}
+    TT -->|✅ Sí| SS
+    TT -->|❌ No| UU[⏰ Recordatorio pago]
+
+    %% Proceso de Venta
+    SS --> VV[💼 Crear Registro Venta]
+    VV --> WW[(🗄️ Base de Datos<br/>ventas)]
+
+    VV --> XX[📋 Generar Documentación]
+    XX --> YY[🧾 Factura]
+    YY --> ZZ[📄 Contrato]
+    ZZ --> AAA[📑 Documentos Legales]
+
+    XX --> BBB[🔄 Actualizar Inventario]
+    BBB --> CCC[✅ Marcar auto como vendido]
+    CCC --> DDD[(🗄️ Base de Datos<br/>autos)]
+
+    %% Entrega
+    AAA --> EEE[🚛 Coordinar Entrega]
+    EEE --> FFF{⚡ ¿Entrega inmediata?}
+    FFF -->|✅ Sí| GGG[🚗 Entregar vehículo]
+    FFF -->|❌ No| HHH[📅 Agendar fecha entrega]
+
+    HHH --> III[📆 Fecha programada]
+    III --> GGG
+
+    GGG --> JJJ[🙌 Cliente recibe auto]
+    JJJ --> KKK[✅ Actualizar estado venta]
+    KKK --> LLL[🎉 Completado]
+
+    %% Sistema de Seguimiento
+    subgraph "📊 Sistema de Seguimiento"
+        MMM[📈 Dashboard Admin]
+        MMM --> NNN[👀 Ver todas cotizaciones]
+        MMM --> OOO[⏳ Ver reservas pendientes]
+        MMM --> PPP[✅ Ver ventas completadas]
+        MMM --> QQQ[📊 Métricas de conversión]
+    end
+
+    %% Integraciones
+    subgraph "🔗 Integraciones Externas"
+        RRR[🖼️ Cloudinary<br/>Imágenes]
+        SSS[💬 WhatsApp API<br/>Mensajes]
+        TTT[📧 Email Service<br/>Notificaciones]
+        UUU[👥 CRM<br/>Historial cliente]
+    end
+
+    %% Conexiones del sistema
+    U --> MMM
+    PP --> MMM
+    WW --> MMM
+    DDD --> MMM
+
+    XX --> RRR
+    X --> SSS
+    W --> TTT
+    AA --> UUU

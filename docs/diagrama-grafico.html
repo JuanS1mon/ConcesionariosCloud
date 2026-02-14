@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo Completo - Sistema de Cotización de Autos</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        .diagram-container {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .export-info {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .legend-item {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+        .cliente { background-color: #3498db; }
+        .sistema { background-color: #2ecc71; }
+        .decision { background-color: #e74c3c; }
+        .proceso { background-color: #f39c12; }
+        .base-datos { background-color: #9b59b6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Diagrama de Flujo Completo: Sistema de Cotización de Autos</h1>
+
+        <div class="info-box">
+            <h3>📋 Información del Diagrama</h3>
+            <p>Este diagrama muestra el flujo completo desde que un cliente solicita una cotización hasta la entrega final del vehículo, incluyendo todos los módulos del sistema de pricing inteligente.</p>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-color cliente"></span>
+                <strong>Cliente</strong><br>Acciones del cliente
+            </div>
+            <div class="legend-item">
+                <span class="legend-color sistema"></span>
+                <strong>Sistema</strong><br>Procesos automáticos
+            </div>
+            <div class="legend-item">
+                <span class="legend-color decision"></span>
+                <strong>Decisiones</strong><br>Puntos de bifurcación
+            </div>
+            <div class="legend-item">
+                <span class="legend-color proceso"></span>
+                <strong>Procesos</strong><br>Acciones manuales
+            </div>
+            <div class="legend-item">
+                <span class="legend-color base-datos"></span>
+                <strong>Base de Datos</strong><br>Almacenamiento
+            </div>
+        </div>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    %% Clientes y Canales de Entrada
+    A[👤 Cliente] --> B{📞 ¿Cómo contacta?}
+    B -->|🌐 Sitio Web| C[📝 Formulario Web]
+    B -->|💬 WhatsApp| D[💬 Chat WhatsApp]
+    B -->|📞 Llamada| E[📞 Atención Telefónica]
+    B -->|🏢 Presencial| F[🏢 Showroom]
+
+    %% Recepción de Consulta
+    C --> G[📨 Recepción de Consulta]
+    D --> G
+    E --> G
+    F --> G
+
+    G --> H{🔍 ¿Auto específico?}
+    H -->|✅ Sí| I[🔍 Buscar Auto en Inventario]
+    H -->|❌ No| J[📋 Mostrar Catálogo/General]
+
+    %% Búsqueda y Pricing
+    I --> K{📊 ¿Auto encontrado?}
+    K -->|✅ Sí| L[📄 Obtener Datos del Auto]
+    K -->|❌ No| M[🏪 Buscar en Mercado/Proveedores]
+
+    L --> N[🧠 Pricing Engine]
+    N --> O[💰 Calcular Precio Sugerido]
+    O --> P[📈 Obtener Comparables]
+    P --> Q[⏱️ Simulador de Ventas]
+    Q --> R[📊 Estimar Tiempo de Venta]
+
+    %% Generación de Cotización
+    O --> S[📄 Generar Cotización]
+    R --> S
+    M --> S
+
+    S --> T[💾 Crear Registro Cotización]
+    T --> U[(🗄️ Base de Datos<br/>cotizaciones)]
+
+    %% Comunicación con Cliente
+    S --> V{📤 ¿Canal original?}
+    V -->|🌐 Web| W[📧 Enviar Email + PDF]
+    V -->|💬 WhatsApp| X[💬 Enviar mensaje + PDF]
+    V -->|📞 Teléfono| Y[📞 Llamar y explicar]
+    V -->|🏢 Presencial| Z[📄 Entregar físicamente]
+
+    %% Seguimiento y Negociación
+    W --> AA[📬 Cliente Recibe Cotización]
+    X --> AA
+    Y --> AA
+    Z --> AA
+
+    AA --> BB{💭 ¿Interesado?}
+    BB -->|✅ Sí| CC[🤝 Negociación]
+    BB -->|❌ No| DD[❌ Fin - No interesado]
+
+    CC --> EE{💰 ¿Negociar precio?}
+    EE -->|✅ Sí| FF[🎛️ Simulador Interactivo]
+    EE -->|❌ No| GG[✅ Proceder con precio original]
+
+    FF --> HH[👆 Cliente ajusta precio]
+    HH --> II[🔄 Recalcular tiempo/márgen]
+    II --> JJ[📊 Mostrar impacto]
+    JJ --> KK{👍 ¿Acepta nuevo precio?}
+    KK -->|✅ Sí| GG
+    KK -->|❌ No| LL[🔄 Negociación continúa]
+
+    %% Reserva y Compra
+    GG --> MM[🛒 Cliente decide comprar]
+    MM --> NN{📝 ¿Reserva o compra directa?}
+
+    NN -->|⏳ Reserva| OO[📅 Crear Reserva]
+    OO --> PP[(🗄️ Base de Datos<br/>reservas)]
+    PP --> QQ[✅ Enviar confirmación]
+    QQ --> RR[💳 Esperar pago inicial]
+
+    NN -->|🛒 Compra Directa| SS[✅ Proceder a venta]
+
+    RR --> TT{💳 Pago realizado?}
+    TT -->|✅ Sí| SS
+    TT -->|❌ No| UU[⏰ Recordatorio pago]
+
+    %% Proceso de Venta
+    SS --> VV[💼 Crear Registro Venta]
+    VV --> WW[(🗄️ Base de Datos<br/>ventas)]
+
+    VV --> XX[📋 Generar Documentación]
+    XX --> YY[🧾 Factura]
+    YY --> ZZ[📄 Contrato]
+    ZZ --> AAA[📑 Documentos Legales]
+
+    XX --> BBB[🔄 Actualizar Inventario]
+    BBB --> CCC[✅ Marcar auto como vendido]
+    CCC --> DDD[(🗄️ Base de Datos<br/>autos)]
+
+    %% Entrega
+    AAA --> EEE[🚛 Coordinar Entrega]
+    EEE --> FFF{⚡ ¿Entrega inmediata?}
+    FFF -->|✅ Sí| GGG[🚗 Entregar vehículo]
+    FFF -->|❌ No| HHH[📅 Agendar fecha entrega]
+
+    HHH --> III[📆 Fecha programada]
+    III --> GGG
+
+    GGG --> JJJ[🙌 Cliente recibe auto]
+    JJJ --> KKK[✅ Actualizar estado venta]
+    KKK --> LLL[🎉 Completado]
+
+    %% Sistema de Seguimiento
+    subgraph "📊 Sistema de Seguimiento"
+        MMM[📈 Dashboard Admin]
+        MMM --> NNN[👀 Ver todas cotizaciones]
+        MMM --> OOO[⏳ Ver reservas pendientes]
+        MMM --> PPP[✅ Ver ventas completadas]
+        MMM --> QQQ[📊 Métricas de conversión]
+    end
+
+    %% Integraciones
+    subgraph "🔗 Integraciones Externas"
+        RRR[🖼️ Cloudinary<br/>Imágenes]
+        SSS[💬 WhatsApp API<br/>Mensajes]
+        TTT[📧 Email Service<br/>Notificaciones]
+        UUU[👥 CRM<br/>Historial cliente]
+    end
+
+    %% Conexiones del sistema
+    U --> MMM
+    PP --> MMM
+    WW --> MMM
+    DDD --> MMM
+
+    XX --> RRR
+    X --> SSS
+    W --> TTT
+    AA --> UUU
+
+    %% Estilos para nodos
+    classDef clienteClass fill:#3498db,color:#fff,stroke:#2980b9,stroke-width:2px
+    classDef sistemaClass fill:#2ecc71,color:#fff,stroke:#27ae60,stroke-width:2px
+    classDef decisionClass fill:#e74c3c,color:#fff,stroke:#c0392b,stroke-width:2px
+    classDef procesoClass fill:#f39c12,color:#fff,stroke:#e67e22,stroke-width:2px
+    classDef baseDatosClass fill:#9b59b6,color:#fff,stroke:#8e44ad,stroke-width:2px
+
+    class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,BB,CC,DD,EE,FF,GG,HH,II,JJ,KK,LL,MM,NN,OO,PP,QQ,RR,SS,TT,UU,VV,WW,XX,YY,ZZ,AAA,BBB,CCC,DDD,EEE,FFF,GGG,HHH,III,JJJ,KKK,LLL clienteClass
+    class MMM,NNN,OOO,PPP,QQQ sistemaClass
+    class RRR,SSS,TTT,UUU integracionClass
+            </div>
+        </div>
+
+        <div class="export-info">
+            <h3>🖼️ Exportar Diagrama como Imagen</h3>
+            <p><strong>Opción 1 - Navegador:</strong> Click derecho en el diagrama → "Guardar imagen como..."</p>
+            <p><strong>Opción 2 - Mermaid CLI:</strong> Instalar mermaid-cli y usar:</p>
+            <pre><code>npm install -g @mermaid-js/mermaid-cli
+mmdc -i diagrama.html -o diagrama.png</code></pre>
+            <p><strong>Opción 3 - Online:</strong> Copiar el código Mermaid a <a href="https://mermaid.live" target="_blank" rel="noopener">mermaid.live</a></p>
+        </div>
+
+        <div class="info-box">
+            <h3>📖 Leyenda del Diagrama</h3>
+            <ul>
+                <li><strong>👤 Cliente:</strong> Acciones realizadas por el cliente</li>
+                <li><strong>🧠 Sistema:</strong> Procesos automáticos del sistema</li>
+                <li><strong>🤝 Negociación:</strong> Interacción cliente-sistema</li>
+                <li><strong>📊 Dashboard:</strong> Interfaz administrativa</li>
+                <li><strong>🗄️ Base de Datos:</strong> Almacenamiento persistente</li>
+                <li><strong>🔗 Integraciones:</strong> Servicios externos</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 Puntos Críticos del Proceso</h3>
+            <ul>
+                <li><strong>📞 Contacto inicial:</strong> Captura efectiva del lead</li>
+                <li><strong>🔍 Búsqueda de auto:</strong> Disponibilidad en inventario</li>
+                <li><strong>🧠 Pricing inteligente:</strong> Cálculo automático de precios</li>
+                <li><strong>🤝 Negociación:</strong> Simulador interactivo</li>
+                <li><strong>📋 Documentación:</strong> Generación automática</li>
+                <li><strong>🚛 Entrega:</strong> Coordinación logística</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Configurar Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            securityLevel: 'loose'
+        });
+
+        // Re-renderizar después de cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.init();
+        });
+    </script>
+</body>
+</html>
